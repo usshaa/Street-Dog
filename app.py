@@ -18,9 +18,11 @@ st.set_page_config(page_title="Street Dog Management & Reporting System", layout
 # Initialize Gemini Client from the local .env file or sidebar input.
 api_key = st.sidebar.text_input(
     "Enter Gemini API Key",
-    value=os.getenv("GEMINI_API_KEY", ""),
+    placeholder="Paste your Gemini API key",
     type="password",
+    help="Your key is used only for this app session.",
 )
+api_key = api_key or os.getenv("GEMINI_API_KEY", "")
 
 st.title("🐾 Street Dog Incident & Management System")
 st.caption("Upload an image of a stray dog/pack to assess severity, generate management protocols, and report spatial data.")
